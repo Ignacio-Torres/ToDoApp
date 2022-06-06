@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         fabToDelete.setOnClickListener{
-            Toast.makeText(this,"TAREA BORRADA",Toast.LENGTH_SHORT)
+            Toast.makeText(this,"TAREA BORRADA",Toast.LENGTH_SHORT).show()
         }
     }
 }

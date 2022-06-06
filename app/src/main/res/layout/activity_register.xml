@@ -41,17 +41,20 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email" />
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8pt"
-                android:id="@+id/activity_register_til_password">
+                android:id="@+id/activity_register_til_password"
+                app:passwordToggleEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password" />
+                    android:hint="Password"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:id="@+id/activity_register_btn_register"
