@@ -20,9 +20,12 @@ class TaskItemActivity : AppCompatActivity(){
         val btnBack = findViewById<Button>(R.id.activity_task_item_btn_back)
         val tvDescription = findViewById<TextView>(R.id.activity_task_item_tv_description)
         val tvPriority = findViewById<TextView>(R.id.activity_task_item_tv_priority)
+        val tvLimitDate = findViewById<TextView>(R.id.activity_task_item_tv_limit_date)
+
         tvTitle.text = task.title
         tvDescription.text = task.description
         tvPriority.text = task.priority.toString()
+        tvLimitDate.text = task.finishDate.toString()
 
         btnEdit.setOnClickListener{
             val intent = Intent(this, EditTaskActivity::class.java)
