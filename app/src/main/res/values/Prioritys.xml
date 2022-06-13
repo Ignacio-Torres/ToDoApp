@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="prioritys_array">
+        <item>1 - Baja </item>
+        <item>2 - Normal</item>
+        <item>3 - Alta</item>
+        <item>4 - Critica</item>
+    </string-array>
+</resources>

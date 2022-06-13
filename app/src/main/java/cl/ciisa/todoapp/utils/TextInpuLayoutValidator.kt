@@ -2,7 +2,10 @@ package cl.ciisa.todoapp.utils
 
 import android.util.Patterns
 import com.google.android.material.textfield.TextInputLayout
+import java.util.*
 import java.util.regex.Pattern
+import java.text.SimpleDateFormat
+import java.lang.Exception
 
 class TextInputLayoutValidator constructor(textInputLayout: TextInputLayout) {
     private val textInputLayout: TextInputLayout = textInputLayout
@@ -14,6 +17,8 @@ class TextInputLayoutValidator constructor(textInputLayout: TextInputLayout) {
     private val patternHaveNumber = ".*\\d.*".toRegex()
     private val patternHaveUppercase = ".*[A-Z].*".toRegex()
     private val patternHaveLowercase = ".*[a-z].*".toRegex()
+    private val formatter = SimpleDateFormat("yyyy-MM-dd")
+
     private fun setError(invalid: Boolean, message:String){
         if(invalid){
             this.invalid = true
@@ -74,6 +79,20 @@ class TextInputLayoutValidator constructor(textInputLayout: TextInputLayout) {
         }
         return this
     }
+    fun dateAfter(date: Date): TextInputLayoutValidator {
+        if (mustValidate()) {
+            var invalidField = false
+            try {
+                val dateValue = formatter.parse(this.value)
+                invalidField = !dateValue.after(date)
+            } catch (e: Exception) {
+                invalidField = true
+            }
+            this.setError(invalidField, "La fecha no puede ser anterior a ${formatter.format(date)}")
+        }
+        return this
+    }
+
     fun isValid(): Boolean {
         return !this.invalid
     }

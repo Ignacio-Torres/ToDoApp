@@ -35,11 +35,47 @@
                 android:layout_width="409dp"
                 android:layout_height="wrap_content"
                 android:paddingBottom="8pt"
-                android:id="@+id/activity_edit_task_til_task_edit">
+                android:id="@+id/activity_edit_task_til_task_title">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Titulo" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="409dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8pt"
+                android:id="@+id/activity_edit_task_til_task_description">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Tarea" />
+                    android:hint="Descripcion" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/activity_add_task_tv_priority_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4pt"
+                android:text="Prioridad"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/activity_add_task_spn_priority"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="8pt"
+                android:layout_height="48dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8pt"
+                android:id="@+id/activity_add_task_til_date_finish">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="Fecha de Termino para la tarea" />
+
             </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:id="@+id/activity_edit_task_btn_edit"

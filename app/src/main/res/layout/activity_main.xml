@@ -6,119 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:id="@+id/activity_main_sv_scroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ListView
+            android:id="@+id/activity_main_lv_tasks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null">
+
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.95">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/activity_main_btn_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="4pt"
-            android:paddingTop="16pt"
-            android:paddingRight="4pt"
-            android:paddingBottom="16pt">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingRight="24pt">
-                <TextView
-                    android:id="@+id/activity_main_tv_toDoTask_0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:paddingTop="4pt"
-                    android:paddingRight="96pt"
-                    android:text="Tarea 1" />
-                <Button
-                    android:id="@+id/activity_main_btn_delete"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#0003DAC5"
-                    android:text="X"
-                    app:icon="@android:drawable/btn_dialog"
-                    app:iconTint="@color/black"
-                    app:rippleColor="#FFFCFC" />
-            </LinearLayout>
-            <TextView
-                android:id="@+id/activity_main_tv_toDoTask_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="4pt"
-                android:paddingBottom="4pt"
-                android:text="Hello World!" />
+            android:text="@string/agregar" />
 
-            <TextView
-                android:id="@+id/activity_main_tv_toDoTask_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="4pt"
-                android:paddingBottom="4pt"
-                android:text="Hello World!" />
+        <TextView
+            android:id="@+id/activity_main_tv_close_session"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8pt"
+            android:text="@string/cerrar_sesion"
+            android:textAlignment="center"
+            android:textColor="@color/purple_500" />
 
-            <TextView
-                android:id="@+id/activity_main_tv_toDoTask_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="4pt"
-                android:paddingBottom="4pt"
-                android:text="Hello World!" />
-
-            <TextView
-                android:id="@+id/activity_main_tv_toDoTask_4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="4pt"
-                android:paddingBottom="4pt"
-                android:text="Hello World!" />
-
-            <TextView
-                android:id="@+id/activity_main_tv_toDoTask_5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="4pt"
-                android:paddingBottom="4pt"
-                android:text="Hello World!" />
-
-            <TextView
-                android:id="@+id/activity_main_tv_toDoTask_6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="4pt"
-                android:paddingBottom="4pt"
-                android:text="Hello World!" />
-
-            <TextView
-                android:id="@+id/activity_main_tv_toDoTask_7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="4pt"
-                android:paddingBottom="4pt"
-                android:text="Hello World!" />
-
-            <Button
-                android:id="@+id/activity_main_btn_add"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="agregar" />
-
-            <TextView
-                android:id="@+id/activity_main_tv_close_session"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="8pt"
-                android:text="Cerrar Sesion"
-                android:textAlignment="center"
-                android:textColor="@color/purple_500" />
-
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

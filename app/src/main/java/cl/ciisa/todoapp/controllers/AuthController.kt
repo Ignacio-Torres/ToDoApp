@@ -11,7 +11,7 @@ class AuthController constructor(context: Context) {
     private val context = context
 
     fun login(email: String, password: String){
-        if(email=="asd@gmail.com" && password=="asd123"){
+        if(email=="asd@gmail.com" && password=="12345"){
             Toast.makeText(this.context, "Bienvenido ", Toast.LENGTH_SHORT).show()
             val intent = Intent(this.context, MainActivity::class.java)
             this.context.startActivity(intent)
