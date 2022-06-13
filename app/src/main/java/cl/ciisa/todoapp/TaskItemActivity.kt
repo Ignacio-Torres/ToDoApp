@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import cl.ciisa.todoapp.models.Task
+import java.text.SimpleDateFormat
 
 class TaskItemActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
