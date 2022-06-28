@@ -2,4 +2,7 @@
     <string name="app_name">ToDoApp</string>
     <string name="agregar">agregar</string>
     <string name="cerrar_sesion">Cerrar Sesion</string>
+    <string name="confirmar_eliminar">¿Deseas eliminar?</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>

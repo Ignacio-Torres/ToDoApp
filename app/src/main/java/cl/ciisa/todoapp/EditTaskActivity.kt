@@ -7,10 +7,12 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
+import cl.ciisa.todoapp.controllers.TaskController
 import cl.ciisa.todoapp.models.Task
 import cl.ciisa.todoapp.utils.TextInputLayoutValidator
 import cl.ciisa.todoapp.utils.showDatePickerDialog
 import com.google.android.material.textfield.TextInputLayout
+import java.text.SimpleDateFormat
 import java.util.*
 
 class EditTaskActivity : AppCompatActivity() {
@@ -37,12 +39,22 @@ class EditTaskActivity : AppCompatActivity() {
         tilDateFinishTask.editText?.setOnClickListener { _ ->
             showDatePickerDialog(this, tilDateFinishTask, Date())
         }
+        //Tareas anteriores
+        val bundle:Bundle?=intent.extras
+        val title = bundle!!.getString("title").toString()
+        val description = bundle!!.getString("description").toString()
+        val taskId = bundle!!.getString("taskId").toString()
+        val priority = bundle!!.getString("priority").toString()
+        val re = Regex("\\D")
+        val priorityNumber = re.replace(priority, "").toInt()
+        val finishDate = bundle!!.getString("finishDate").toString()
+        tilEditTaskTitle.editText?.setText(title)
+        tilEditTaskDescription.editText?.setText(description)
+        spnPriority.setSelection(priorityNumber-1)
+        tilDateFinishTask.editText?.setText(finishDate)
 
-        //boton editar tarea
         btnEdit.setOnClickListener{
-            val priority = spnPriority.selectedItem
-            val dateFinishTask = tilDateFinishTask.editText?.text.toString()
-            val textInputLayoutEditTaskText = tilEditTaskTitle.editText?.text.toString()
+
             //valido la tarea para que no este vacia y sea requerida
             val textInputLayoutDateFinishTaskValid = TextInputLayoutValidator(tilDateFinishTask)
                 .required()
@@ -53,6 +65,20 @@ class EditTaskActivity : AppCompatActivity() {
                 .isValid()
             //valido que el texto a editar sea valido, y lo guarda, sino muestra el error de campo invalido
             if (textInputLayoutEditTaskTextValid && textInputLayoutDateFinishTaskValid) {
+                val id = taskId.toLong()
+                val newPriority = spnPriority.selectedItem.toString()
+                val newDateFinishTask = tilDateFinishTask.editText?.text.toString()
+                val newTitle = tilEditTaskTitle.editText?.text.toString()
+                val newDescription = tilEditTaskDescription.editText?.text.toString()
+                val task = Task(
+                    id = id,
+                    title = newTitle,
+                    description = newDescription,
+                    priority = newPriority,
+                    finishDate = SimpleDateFormat("yyyy-MM-dd").parse(newDateFinishTask),
+                    done = false
+                )
+                TaskController(this).update(task)
                 val intent = Intent(this,MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)

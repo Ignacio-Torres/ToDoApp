@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import cl.ciisa.todoapp.controllers.AuthController
+import cl.ciisa.todoapp.models.User
 import cl.ciisa.todoapp.utils.TextInputLayoutValidator
 import com.google.android.material.textfield.TextInputLayout
 
@@ -39,8 +40,12 @@ class RegisterActivity : AppCompatActivity() {
                 .isValid()
             //reviso si el email y la contraseña  son validos
             if (emailValid && passwordValid) {
+                val user = User(id = null,
+                    email = email,
+                    password = password,
+                    active=true)
                 //si la contraseña y el email son validos, lo envio al login
-                AuthController(this).register(email, password)
+                AuthController(this).register(user)
             } else {
                 Toast.makeText(this, "Campos inválidos", Toast.LENGTH_SHORT).show()
             }

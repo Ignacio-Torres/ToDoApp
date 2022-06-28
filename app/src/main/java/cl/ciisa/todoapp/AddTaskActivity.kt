@@ -8,6 +8,9 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 import cl.ciisa.todoapp.controllers.AuthController
+import java.text.SimpleDateFormat
+import cl.ciisa.todoapp.controllers.TaskController
+import cl.ciisa.todoapp.models.Task
 import cl.ciisa.todoapp.utils.TextInputLayoutValidator
 import cl.ciisa.todoapp.utils.showDatePickerDialog
 import com.google.android.material.textfield.TextInputLayout
@@ -25,6 +28,7 @@ class AddTaskActivity : AppCompatActivity() {
         val spnPriority = findViewById<Spinner>(R.id.activity_add_task_spn_priority)
         val tilDateFinishTask = findViewById<TextInputLayout>(R.id.activity_edit_task_til_date_finish)
 
+
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.prioritys_array,
@@ -38,7 +42,11 @@ class AddTaskActivity : AppCompatActivity() {
         }
         //boton crear tarea
         btnCreate.setOnClickListener{
-            val textInputLayoutTaskTitle = tilTaskTitle.editText?.text.toString()
+            val title = tilTaskTitle.editText?.text.toString()
+            val description = tilTaskDescription.editText?.text.toString()
+            val priority = spnPriority.selectedItem.toString()
+            val finishDate = tilDateFinishTask.editText?.text.toString()
+
             //valido la tarea por agregar, para que sea requerida y no venga vacia
             val textInputLayoutTaskTitleValid = TextInputLayoutValidator(tilTaskTitle)
                 .required()
@@ -49,6 +57,16 @@ class AddTaskActivity : AppCompatActivity() {
                 .isValid()
             //si el texto es valido, se agrega, sino muestra el error de campo invalido
             if (textInputLayoutTaskTitleValid && textInputLayoutDateFinishTaskValid) {
+                val task = Task(
+                    id = null,
+                    title = title,
+                    description = description,
+                    priority = priority,
+                    finishDate = SimpleDateFormat("yyyyMMdd").parse(finishDate),
+                    done = false
+                )
+
+                TaskController(this).create(task)
                 val intent = Intent(this,MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)

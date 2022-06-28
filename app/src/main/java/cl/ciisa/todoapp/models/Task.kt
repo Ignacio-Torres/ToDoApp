@@ -6,8 +6,8 @@ import java.util.*
 data class Task(
     val id :Long?,
     val title: String,
-    val description: String,
-    val priority: Short,
+    val description: String?,
+    val priority: String,
     val finishDate: Date,
-    val done: Boolean) : Serializable{
+    val done: Boolean = false) : Serializable{
 }

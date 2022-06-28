@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import cl.ciisa.todoapp.controllers.AuthController
 import cl.ciisa.todoapp.controllers.TaskController
 import cl.ciisa.todoapp.ui.TaskAdapter
 
@@ -14,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val allTasks = TaskController(this).getAll()
         val lvTasks = findViewById<ListView>(R.id.activity_main_lv_tasks)
         val adapter = TaskAdapter(this,allTasks)
@@ -30,11 +32,12 @@ class MainActivity : AppCompatActivity() {
                 view.context.startActivity(intent)
             }
         }
+        //cerrar sesion
         tvCloseSession.setOnClickListener{
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intent)
+            val controller = AuthController(this)
+            controller.clearSession()
         }
+        //agregar tarea
         fabAdd.setOnClickListener{
             val intent = Intent(this, AddTaskActivity::class.java)
             startActivity(intent)
