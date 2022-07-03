@@ -51,7 +51,7 @@ class TaskItemActivity : AppCompatActivity(){
         //boton borrar tarea
         btnDelete.setOnClickListener{
             val builder = AlertDialog.Builder(this)
-            builder.setMessage("Are you sure you want to Delete?")
+            builder.setMessage("¿Esta seguro que desea elminar?")
                 .setCancelable(false)
                 .setPositiveButton("Si") { dialog, id ->
                     TaskController(this).delete(taskId)
